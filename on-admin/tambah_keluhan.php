@@ -25,4 +25,17 @@ $idteknisi = $_POST['idteknisi'];
 mysqli_query($conn, "insert into keluhan (idpelanggan, keluhan, penyebab, tindakan, tgl_keluhan, tgl_perbaikan, idteknisi) 
 							values 
 							('$idpelanggan', '$keluhan', '$penyebab', '$tindakan', '$tgl_keluhan', '$tgl_perbaikan', '$idteknisi')");
+
+
+$data =  (isset($_SESSION['teknisi'])) ? $_SESSION['teknisi'] : [];
+
+$query = "SELECT idkeluhan FROM keluhan ORDER BY idkeluhan DESC";
+$sql = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($sql);
+
+foreach ($data as $d) {
+	mysqli_query($conn, "insert into keluhan_teknisi (idkeluhan, idteknisi) 
+							values 
+							(" . $row['idkeluhan'] . "," . $d['idteknisi'] . ")");
+}
 header('location:keluhan.php');

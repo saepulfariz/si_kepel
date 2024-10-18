@@ -96,7 +96,7 @@
 							<div class="col-lg-2">
 								<label class="control-label" style="position:relative; top:7px;">Teknisi:</label>
 							</div>
-							<div class="col-lg-10">
+							<div class="col-lg-8">
 								<?php include "../config.php"; ?>
 								<!--ambil data propinsi-->
 								<?php
@@ -117,7 +117,16 @@
 									?>
 								</select>
 							</div>
+							<div class="col-lg-2">
+								<button type="button" id="addteknisi" class="btn btn-success"><i class="glyphicon glyphicon-plus"></i></button>
+
+							</div>
 						</div>
+						<div style="height:10px;"></div>
+						<div id="res-teknisi">
+
+						</div>
+
 				</div>
 			</div>
 			<div class="modal-footer">
@@ -129,3 +138,50 @@
 		</div>
 	</div>
 </div>
+
+<script>
+	showteknisi();
+
+	function delteknisi(id) {
+		$.ajax({
+			url: 'keluhan.php?delteknisi',
+			method: 'GET', // POST
+			data: {
+				id: id
+			},
+			dataType: 'json', // json
+			success: function(data) {
+				showteknisi()
+			}
+		});
+	}
+
+	function showteknisi() {
+		$.ajax({
+			url: 'keluhan.php?showteknisi',
+			method: 'GET', // POST
+
+			dataType: 'html', // json
+			success: function(data) {
+				$('#res-teknisi').html(data);
+			}
+		});
+	}
+	$('#addteknisi').on('click', function() {
+		var idteknisi = $('#idteknisi').val();
+		// console.log(idteknisi);
+		$.ajax({
+			url: 'keluhan.php?setteknisi',
+			method: 'GET', // POST
+			data: {
+				idteknisi: idteknisi
+			},
+			dataType: 'json', // json
+			success: function(data) {
+				// console.log(data);
+				showteknisi()
+			}
+		});
+
+	})
+</script>
