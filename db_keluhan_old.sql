@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 27, 2024 at 12:13 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Waktu pembuatan: 16 Des 2018 pada 12.58
+-- Versi server: 10.1.36-MariaDB
+-- Versi PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Struktur dari tabel `admin`
 --
 
 CREATE TABLE `admin` (
@@ -32,10 +33,10 @@ CREATE TABLE `admin` (
   `nama_admin` varchar(45) DEFAULT NULL,
   `kata_sandi` varchar(45) DEFAULT NULL,
   `level_user` varchar(150) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `admin`
+-- Dumping data untuk tabel `admin`
 --
 
 INSERT INTO `admin` (`idadmin`, `nama_admin`, `kata_sandi`, `level_user`) VALUES
@@ -45,7 +46,7 @@ INSERT INTO `admin` (`idadmin`, `nama_admin`, `kata_sandi`, `level_user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `keluhan`
+-- Struktur dari tabel `keluhan`
 --
 
 CREATE TABLE `keluhan` (
@@ -57,10 +58,10 @@ CREATE TABLE `keluhan` (
   `tgl_keluhan` date DEFAULT NULL,
   `tgl_perbaikan` date DEFAULT NULL,
   `idteknisi` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `keluhan`
+-- Dumping data untuk tabel `keluhan`
 --
 
 INSERT INTO `keluhan` (`idkeluhan`, `idpelanggan`, `keluhan`, `penyebab`, `tindakan`, `tgl_keluhan`, `tgl_perbaikan`, `idteknisi`) VALUES
@@ -68,37 +69,12 @@ INSERT INTO `keluhan` (`idkeluhan`, `idpelanggan`, `keluhan`, `penyebab`, `tinda
 (1234, 16, 'Produk Tidak Berjalan dengan Normal', 'Kelistrikan', 'perlu pengechekan ke lokasi device', '2018-12-08', '2018-12-07', 8),
 (1235, 17, 'Alat sering mati mendadak', 'kerusakan pada komponen', 'pergantian spartpare', '2018-12-13', '2018-12-21', 10),
 (1237, 19, 'Produk tidak berjalan dengan baik', 'kondisi listrik tidak stabil', 'perlu pengechekan ke lokasi', '2018-12-31', '2018-12-13', 10),
-(1238, 20, 'Produk tidak berjalan dengan baik', 'Kelistrikan', 'asda', '2018-12-15', '2018-12-29', 8),
-(1239, 28, 'tes', 'res', 'es', '2024-10-17', '2024-10-17', 11),
-(1240, 29, 'test', 'test', 'test', '2024-10-17', '2024-10-17', 10);
+(1238, 20, 'Produk tidak berjalan dengan baik', 'Kelistrikan', 'asda', '2018-12-15', '2018-12-29', 8);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `keluhan_teknisi`
---
-
-CREATE TABLE `keluhan_teknisi` (
-  `id` int(11) NOT NULL,
-  `idkeluhan` int(11) NOT NULL,
-  `idteknisi` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `keluhan_teknisi`
---
-
-INSERT INTO `keluhan_teknisi` (`id`, `idkeluhan`, `idteknisi`) VALUES
-(1, 1231, 9),
-(2, 1234, 8),
-(3, 1235, 10),
-(4, 1237, 10),
-(5, 1238, 11);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `pelanggan`
+-- Struktur dari tabel `pelanggan`
 --
 
 CREATE TABLE `pelanggan` (
@@ -107,10 +83,10 @@ CREATE TABLE `pelanggan` (
   `alamat_pelanggan` varchar(150) DEFAULT NULL,
   `telepon_pelanggan` varchar(45) DEFAULT NULL,
   `email_pelanggan` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `pelanggan`
+-- Dumping data untuk tabel `pelanggan`
 --
 
 INSERT INTO `pelanggan` (`idpelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `telepon_pelanggan`, `email_pelanggan`) VALUES
@@ -124,14 +100,12 @@ INSERT INTO `pelanggan` (`idpelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `t
 (23, 'Core Laboratories Indonesia', 'Setu, South Tangerang City, Banten 15314', '021 80623777', 'info@corelab.com'),
 (24, 'Pt. Unilab Perdana', 'Ciledug Raya No.10 Cipulir  Kebayoran Lama, Jakarta Selatan', '062 21 7253323', 'info@unilabperdana.com'),
 (25, 'Pusat Hiperkes Dan Keselamatan Kerja', 'East Cempaka Putih, Cempaka Putih, Central Jakarta City, Jakarta 10510', '021 4267398', 'admin@balaik3jakarta.com'),
-(26, 'PT. Panca Amara Utama', 'DBS Bank Tower 18th Floor Ciputra World', '02129885700', 'admin@pau.co.id'),
-(28, 'sae', 'sss', '082216501151', 'saepulhidayat302@gmail.com'),
-(29, 'Tes', 'sss', '082216501151', 'saepulhidayat302@gmail.com');
+(26, 'PT. Panca Amara Utama', 'DBS Bank Tower 18th Floor Ciputra World', '02129885700', 'admin@pau.co.id');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perbaikan`
+-- Struktur dari tabel `perbaikan`
 --
 
 CREATE TABLE `perbaikan` (
@@ -141,10 +115,10 @@ CREATE TABLE `perbaikan` (
   `idteknisi` int(11) NOT NULL,
   `perbaikan` varchar(255) DEFAULT NULL,
   `tgl_perbaikan` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
--- Dumping data for table `perbaikan`
+-- Dumping data untuk tabel `perbaikan`
 --
 
 INSERT INTO `perbaikan` (`idperbaikan`, `idpelanggan`, `idkeluhan`, `idteknisi`, `perbaikan`, `tgl_perbaikan`) VALUES
@@ -155,7 +129,7 @@ INSERT INTO `perbaikan` (`idperbaikan`, `idpelanggan`, `idkeluhan`, `idteknisi`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `teknisi`
+-- Struktur dari tabel `teknisi`
 --
 
 CREATE TABLE `teknisi` (
@@ -163,10 +137,10 @@ CREATE TABLE `teknisi` (
   `nama_teknisi` varchar(45) DEFAULT NULL,
   `telpon_teknisi` varchar(45) DEFAULT NULL,
   `email_teknisi` varchar(45) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `teknisi`
+-- Dumping data untuk tabel `teknisi`
 --
 
 INSERT INTO `teknisi` (`idteknisi`, `nama_teknisi`, `telpon_teknisi`, `email_teknisi`) VALUES
@@ -181,13 +155,13 @@ INSERT INTO `teknisi` (`idteknisi`, `nama_teknisi`, `telpon_teknisi`, `email_tek
 --
 
 --
--- Indexes for table `admin`
+-- Indeks untuk tabel `admin`
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`idadmin`);
 
 --
--- Indexes for table `keluhan`
+-- Indeks untuk tabel `keluhan`
 --
 ALTER TABLE `keluhan`
   ADD PRIMARY KEY (`idkeluhan`),
@@ -195,21 +169,13 @@ ALTER TABLE `keluhan`
   ADD KEY `idpelanggan` (`idpelanggan`);
 
 --
--- Indexes for table `keluhan_teknisi`
---
-ALTER TABLE `keluhan_teknisi`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `idkeluhan_keluhan_teknisi` (`idkeluhan`),
-  ADD KEY `idteknisi_keluhan_teknisi` (`idteknisi`);
-
---
--- Indexes for table `pelanggan`
+-- Indeks untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
   ADD PRIMARY KEY (`idpelanggan`);
 
 --
--- Indexes for table `perbaikan`
+-- Indeks untuk tabel `perbaikan`
 --
 ALTER TABLE `perbaikan`
   ADD PRIMARY KEY (`idperbaikan`) USING BTREE,
@@ -219,71 +185,58 @@ ALTER TABLE `perbaikan`
   ADD KEY `idteknisi` (`idteknisi`);
 
 --
--- Indexes for table `teknisi`
+-- Indeks untuk tabel `teknisi`
 --
 ALTER TABLE `teknisi`
   ADD PRIMARY KEY (`idteknisi`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `admin`
+-- AUTO_INCREMENT untuk tabel `admin`
 --
 ALTER TABLE `admin`
   MODIFY `idadmin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `keluhan`
+-- AUTO_INCREMENT untuk tabel `keluhan`
 --
 ALTER TABLE `keluhan`
-  MODIFY `idkeluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1241;
+  MODIFY `idkeluhan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1239;
 
 --
--- AUTO_INCREMENT for table `keluhan_teknisi`
---
-ALTER TABLE `keluhan_teknisi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `pelanggan`
+-- AUTO_INCREMENT untuk tabel `pelanggan`
 --
 ALTER TABLE `pelanggan`
-  MODIFY `idpelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `idpelanggan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT for table `perbaikan`
+-- AUTO_INCREMENT untuk tabel `perbaikan`
 --
 ALTER TABLE `perbaikan`
   MODIFY `idperbaikan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12348;
 
 --
--- AUTO_INCREMENT for table `teknisi`
+-- AUTO_INCREMENT untuk tabel `teknisi`
 --
 ALTER TABLE `teknisi`
   MODIFY `idteknisi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `keluhan`
+-- Ketidakleluasaan untuk tabel `keluhan`
 --
 ALTER TABLE `keluhan`
   ADD CONSTRAINT `keluhan_ibfk_1` FOREIGN KEY (`idteknisi`) REFERENCES `teknisi` (`idteknisi`),
   ADD CONSTRAINT `keluhan_ibfk_2` FOREIGN KEY (`idpelanggan`) REFERENCES `pelanggan` (`idpelanggan`);
 
 --
--- Constraints for table `keluhan_teknisi`
---
-ALTER TABLE `keluhan_teknisi`
-  ADD CONSTRAINT `idkeluhan_keluhan_teknisi` FOREIGN KEY (`idkeluhan`) REFERENCES `keluhan` (`idkeluhan`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `idteknisi_keluhan_teknisi` FOREIGN KEY (`idteknisi`) REFERENCES `teknisi` (`idteknisi`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `perbaikan`
+-- Ketidakleluasaan untuk tabel `perbaikan`
 --
 ALTER TABLE `perbaikan`
   ADD CONSTRAINT `perbaikan_ibfk_1` FOREIGN KEY (`idpelanggan`) REFERENCES `pelanggan` (`idpelanggan`),
